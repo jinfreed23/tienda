@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tdetalles", schema = "dbtienda")
-public class Tdetalles {
+public class Detalles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "IdDetalles", nullable = false, length = 45)
@@ -78,7 +78,7 @@ public class Tdetalles {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tdetalles that = (Tdetalles) o;
+        Detalles that = (Detalles) o;
         return numBoleta == that.numBoleta && idProducto == that.idProducto && Double.compare(that.precioUnitario, precioUnitario) == 0 && cantidad == that.cantidad && Double.compare(that.precioTotal, precioTotal) == 0 && Objects.equals(idDetalles, that.idDetalles);
     }
 

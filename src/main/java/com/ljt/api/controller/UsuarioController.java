@@ -1,12 +1,13 @@
 package com.ljt.api.controller;
 
 
-import com.ljt.api.model.Tusuarios;
+import com.ljt.api.model.Usuarios;
 import com.ljt.api.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/usuario", produces = "application/json")
@@ -16,23 +17,29 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping("/add")
-    public Tusuarios addUsuario(@RequestBody Tusuarios usuario){
+    public Usuarios addUsuario(@RequestBody Usuarios usuario){
+
         return usuarioService.AgregarUsuario(usuario);
     }
 
     @PutMapping("/edit")
-    public Tusuarios editUsuario(@RequestBody Tusuarios usuario){
+    public Usuarios editUsuario(@RequestBody Usuarios usuario){
         return usuarioService.EditarUsuario(usuario);
     }
 
     @GetMapping("/all")
-    public List<Tusuarios> listUsuarios(){
+    public List<Usuarios> listUsuarios(){
         return usuarioService.listarUsuarios();
     }
 
     @DeleteMapping("/remove")
-    public Tusuarios eliminarUsuario(@RequestBody Tusuarios usuario){
+    public Usuarios eliminarUsuario(@RequestBody Usuarios usuario){
         return usuarioService.eliminarUsuario(usuario);
     }
 
+    @GetMapping("/login")
+    public Map<String, Object> encriptarMD5(@RequestParam(name = "usuario")String usuario, @RequestParam(name = "psw") String psw)
+    {
+        return usuarioService.LoginUsur(usuario,psw);
+    }
 }

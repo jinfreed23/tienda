@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tproductos", schema = "dbtienda")
-public class Tproductos {
+public class Productos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "IdProducto", nullable = false)
@@ -79,7 +79,7 @@ public class Tproductos {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tproductos that = (Tproductos) o;
+        Productos that = (Productos) o;
         return idProducto == that.idProducto && idUsuario == that.idUsuario && Double.compare(that.precio, precio) == 0 && Objects.equals(producto, that.producto) && Objects.equals(stock, that.stock) && Objects.equals(fechaDeIngreso, that.fechaDeIngreso);
     }
 
